@@ -1,0 +1,293 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Panel</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        body {
+            display: flex;
+        }
+
+        #sidebar {
+            width: 250px;
+            height: 100vh;
+            background: #343a40;
+            color: white;
+            padding: 15px;
+        }
+
+        #content {
+            flex: 1;
+            padding: 20px;
+        }
+
+        .content-section {
+            display: none;
+        }
+
+            .content-section.active {
+                display: block;
+            }
+
+        .card {
+            margin: 10px 0;
+        }
+
+        .crop-card {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            margin-bottom: 15px;
+        }
+
+        .crop-info {
+            flex: 1;
+        }
+
+        .crop-chart {
+            width: 150px;
+            height: 150px;
+        }
+    </style>
+</head>
+<body>
+    <div id="sidebar">
+        <h2>Admin Panel</h2>
+        <ul class="nav flex-column">
+            <li class="nav-item">
+                <a class="nav-link text-white" href="#" onclick="showSection('dashboard')">Dashboard</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-white" href="#" onclick="showSection('crops')">Manage</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-white" href="#" onclick="showSection('settings')">Settings</a>
+            </li>
+            <li class="nav-item"> <a class="nav-link text-white" href="#" onclick="showSection('reports')">Reports</a>
+        </ul>
+    </div>
+    <div id="content">
+        <div id="dashboard" class="content-section active">
+            <h1>Dashboard</h1>
+            <div class="row">
+                <div class="col-md-3">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">Block 1</h5>
+                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">Block 2</h5>
+                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">Block 3</h5>
+                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">Block 4</h5>
+                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row mt-4">
+                <div class="col-md-6">
+                    <canvas id="chart1"></canvas>
+                </div>
+                <div class="col-md-6">
+                    <canvas id="chart2"></canvas>
+                </div>
+            </div>
+
+            <div>
+                <h2>Crop</h2>
+                <div id="crop"></div>
+            </div>
+        </div>
+
+        <div id="crops" class="content-section">
+            <h1>Crops</h1>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="crop-card">
+                        <div class="crop-info">
+                            <h5>Wheat</h5>
+                            <p>Planted: March 2024</p>
+                        </div>
+                        <canvas id="cropChart1" class="crop-chart"></canvas>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="crop-card">
+                        <div class="crop-info">
+                            <h5>Corn</h5>
+                            <p>Planted: April 2024</p>
+                        </div>
+                        <canvas id="cropChart2" class="crop-chart"></canvas>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="crop-card">
+                        <div class="crop-info">
+                            <h5>Barley</h5>
+                            <p>Planted: May 2024</p>
+                        </div>
+                        <canvas id="cropChart3" class="crop-chart"></canvas>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="crop-card">
+                        <div class="crop-info">
+                            <h5>Rice</h5>
+                            <p>Planted: June 2024</p>
+                        </div>
+                        <canvas id="cropChart4" class="crop-chart"></canvas>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="crop-card">
+                        <div class="crop-info">
+                            <h5>Soybeans</h5>
+                            <p>Planted: July 2024</p>
+                        </div>
+                        <canvas id="cropChart5" class="crop-chart"></canvas>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="crop-card">
+                        <div class="crop-info">
+                            <h5>Oats</h5>
+                            <p>Planted: August 2024</p>
+                        </div>
+                        <canvas id="cropChart6" class="crop-chart"></canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="settings" class="content-section">
+            <h1>Settings</h1>
+            <p>Adjust your settings here.</p>
+        </div>
+
+        
+
+        <div id="reports" class="content-section"> <h1>Отчеты</h1> <a asp-controller="Reports" asp-action="GeneratePdfReport" class="btn btn-primary">Сгенерировать PDF отчет</a> <a asp-controller="Reports" asp-action="GenerateExcelReport" class="btn btn-primary">Сгенерировать Excel отчет</a> </div>
+    </div>
+
+
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            // Загружаем данные через AJAX
+            fetch('/Crop/Index')
+                .then(response => response.text())
+                .then(html => {
+                    document.getElementById("crop").innerHTML = html;
+                })
+                .catch(error => console.error('Error loading data:', error));
+        });
+    </script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script>
+        function showSection(sectionId) {
+            const sections = document.querySelectorAll('.content-section');
+            sections.forEach(section => {
+                section.classList.remove('active');
+            });
+            document.getElementById(sectionId).classList.add('active');
+        }
+
+        // Chart.js example data and configuration for crop charts
+        const cropData = [65, 75, 70, 80, 60, 90];
+        const cropLabels = ['Wheat', 'Corn', 'Barley', 'Rice', 'Soybeans', 'Oats'];
+        cropLabels.forEach((label, index) => {
+            const ctx = document.getElementById(`cropChart${index + 1}`).getContext('2d');
+            new Chart(ctx, {
+                type: 'doughnut',
+                data: {
+                    labels: ['Matured', 'Remaining'],
+                    datasets: [{
+                        data: [cropData[index], 100 - cropData[index]],
+                        backgroundColor: ['#36A2EB', '#FFCE56'],
+                        hoverBackgroundColor: ['#36A2EB', '#FFCE56']
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false
+                }
+            });
+        });
+
+        // Chart.js example data and configuration for dashboard charts
+        const ctx1 = document.getElementById('chart1').getContext('2d');
+        const chart1 = new Chart(ctx1, {
+            type: 'bar',
+            data: {
+                labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
+                datasets: [{
+                    label: 'Dataset 1',
+                    data: [65, 59, 80, 81, 56, 55, 40],
+                    backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                    borderColor: 'rgba(75, 192, 192, 1)',
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+
+        const ctx2 = document.getElementById('chart2').getContext('2d');
+        const chart2 = new Chart(ctx2, {
+            type: 'line',
+            data: {
+                labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
+                datasets: [{
+                    label: 'Dataset 2',
+                    data: [28, 48, 40, 19, 86, 27, 90],
+                    backgroundColor: 'rgba(153, 102, 255, 0.2)',
+                    borderColor: 'rgba(153, 102, 255, 1)',
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html>

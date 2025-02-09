@@ -1,0 +1,8 @@
+﻿@model AgroSarmer.Models.WeatherInfo
+
+<div class="weather-container">
+    <h2>Погода в @Model.City</h2>
+    <p><strong>Температура:</strong> @Model.Temperature</p>
+    <p><strong>Описание:</strong> @Model.Description</p>
+    <img src="@Model.Icon" alt="Weather Icon">
+</div>

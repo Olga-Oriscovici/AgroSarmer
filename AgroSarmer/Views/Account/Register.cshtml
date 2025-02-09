@@ -1,0 +1,52 @@
+﻿@using AgroSarmer.ViewModels;
+@model RegisterVM
+
+@{
+    ViewData["Title"] = "Register";
+}
+
+<div class="row d-flex align-items-center justify-content-center">
+    <div class="col-md-4 card p-3">
+        <h2 class="text-center text-info">Register</h2>
+        <form asp-action="Register" method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div> <!-- Добавлен класс для отображения ошибок -->
+
+            <div class="mb-1">
+                <label asp-for="Name" class="form-label"></label> <!-- Добавлен класс для соответствия Bootstrap 5 -->
+                <input asp-for="Name" class="form-control" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+
+            <div class="mb-1">
+                <label asp-for="Email" class="form-label"></label>
+                <input asp-for="Email" class="form-control" /> <!-- Добавлен тип password -->
+                <span asp-validation-for="Email" class="text-danger"></span>
+            </div>
+
+            <div class="mb-1">
+                <label asp-for="Password" class="form-label"></label>
+                <input asp-for="Password" class="form-control" /> <!-- Добавлен тип password -->
+                <span asp-validation-for="Password" class="text-danger"></span>
+            </div>
+            <div class="mb-1">
+                <label asp-for="ConfirmPassword" class="form-label"></label>
+                <input asp-for="ConfirmPassword" class="form-control" /> <!-- Добавлен тип password -->
+                <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
+            </div>
+            <div class="mb-1">
+                <label asp-for="PhoneNumber" class="form-label"></label>
+                <textarea asp-for="PhoneNumber" class="form-control" rows="2"> </textarea><!-- Добавлен тип password -->
+                <span asp-validation-for="PhoneNumber" class="text-danger"></span>
+            </div>
+
+            <div class="row">
+                <div class="col-8">
+                    <a asp-action="Login" class="text-decoration-none float-start mt-2">Have  account?</a> <!-- Исправлен текст ссылки -->
+                </div>
+                <div class="col-4">
+                    <input type="submit" value="Register" class="btn btn-primary btn-sm float-end" />
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
